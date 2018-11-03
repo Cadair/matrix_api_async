@@ -8,16 +8,19 @@ This is based on the work in https://github.com/matrix-org/matrix-python-sdk/pul
 Usage
 -----
 
-.. code-block:: 
-      async def main():
-          async with aiohttp.ClientSession() as session:
-              mapi = AsyncHTTPAPI("http://matrix.org", session)
-              resp = await mapi.get_room_id("#matrix:matrix.org")
-              print(resp)
+::
+import aiohttp
+from matrix_api_async import AsyncHTTPAPI
+
+    async def main():
+        async with aiohttp.ClientSession() as session:
+            mapi = AsyncHTTPAPI("http://matrix.org", session)
+            resp = await mapi.get_room_id("#matrix:matrix.org")
+            print(resp)
 
 
-      loop = asyncio.get_event_loop()
-      loop.run_until_complete(main())
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
 
 
 Installation
