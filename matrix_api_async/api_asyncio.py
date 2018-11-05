@@ -100,7 +100,7 @@ class AsyncHTTPAPI(MatrixHttpApi):
     async def get_room_displayname(self, room_id, user_id):
         """Get a users displayname for the given room"""
         if room_id.startswith('#'):
-            room_id = await self.get_room_id(room_id)
+            room_id = await self.get_room_id(room_id)  #pragma: nocover
 
         members = await self.get_room_members(room_id)
         members = members['chunk']
