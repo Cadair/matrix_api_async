@@ -9,8 +9,9 @@ Usage
 -----
 
 ::
-import aiohttp
-from matrix_api_async import AsyncHTTPAPI
+
+  import aiohttp
+  from matrix_api_async import AsyncHTTPAPI
 
     async def main():
         async with aiohttp.ClientSession() as session:
