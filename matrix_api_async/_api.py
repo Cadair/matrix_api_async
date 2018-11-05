@@ -3,6 +3,8 @@ A slightly modified version of the sync API class to make things a little neater
 
 All the non-asyncio stuff should go in here.
 """
+import json
+
 from matrix_client.api import MatrixHttpApi as _MatrixHttpApi
 
 __all__ = ["MatrixHttpApi"]
@@ -49,6 +51,7 @@ class MatrixHttpApi(_MatrixHttpApi):
 
         This is factored out of _send as it is shared by the asyncio class.
         """
+        waittime = self.default_429_wait_ms / 1000
         try:
             waittime = responsejson['retry_after_ms'] / 1000
         except KeyError:
@@ -56,7 +59,7 @@ class MatrixHttpApi(_MatrixHttpApi):
                 errordata = json.loads(responsejson['error'])
                 waittime = errordata['retry_after_ms'] / 1000
             except KeyError:
-                waittime = self.default_429_wait_ms / 1000
+                pass
         finally:
             return waittime
 
