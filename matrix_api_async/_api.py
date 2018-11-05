@@ -34,7 +34,9 @@ class MatrixHttpApi(_MatrixHttpApi):
         if "Content-Type" not in headers:
             headers["Content-Type"] = "application/json"
 
-        query_params["access_token"] = self.token
+        if self.token:
+            query_params["access_token"] = self.token
+
         if self.identity:
             query_params["user_id"] = self.identity
 
