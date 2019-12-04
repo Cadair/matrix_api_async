@@ -1,8 +1,6 @@
 """
 This is a asyncio wrapper for the matrix API class.
 """
-import json
-
 from asyncio import sleep
 from urllib.parse import quote
 
@@ -12,9 +10,10 @@ from ._api import MatrixHttpApi, MATRIX_V2_API_PATH
 
 __all__ = ["AsyncHTTPAPI"]
 
+
 class AsyncHTTPAPI(MatrixHttpApi):
     """
-    Contains all raw matrix HTTP client-server API calls using asyncio and coroutines.
+    Contains all raw matrix HTTP client-server API calls using coroutines.
 
     Usage:
         async def main():

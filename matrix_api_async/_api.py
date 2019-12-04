@@ -4,8 +4,10 @@ A slightly modified version of the sync API class to make things a little neater
 All the non-asyncio stuff should go in here.
 """
 import json
+from time import sleep
 
 from matrix_client.api import MatrixHttpApi as _MatrixHttpApi
+from matrix_client.errors import MatrixError, MatrixRequestError, MatrixHttpLibError
 
 __all__ = ["MatrixHttpApi"]
 
@@ -14,7 +16,8 @@ MATRIX_V2_API_PATH = "/_matrix/client/r0"
 
 
 class MatrixHttpApi(_MatrixHttpApi):
-    def _prepare_send(self, method, content, query_params, headers, path, api_path):
+    def _prepare_send(self, method, content, query_params,
+                      headers, path, api_path):
         """
         Process the arguments to the _send method.
 
